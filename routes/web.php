@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Market\CategoryController;
 use App\Http\Controllers\Admin\Market\BrandController;
 
+use App\Http\Controllers\Admin\Market\CommentController;
+
 // admin url
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
@@ -18,16 +20,27 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::post('/store', [CategoryController::Class, 'store'])->name('admin.market.category.store');
             Route::get('/edit/{id}', [CategoryController::Class, 'edit'])->name('admin.market.category.edit');
             Route::put('/update/{id}', [CategoryController::Class, 'update'])->name('admin.market.category.update');
-            Route::delete('/delete/{id}', [CategoryController::Class, 'destroy'])->name('admin.market.category.destroy');
+            Route::delete('/destroy/{id}', [CategoryController::Class, 'destroy'])->name('admin.market.category.destroy');
         });
 
+        //brand
         Route::prefix('brand')->group(function(){
             Route::get('/', [BrandController::Class, 'index'])->name('admin.market.brand.index');
             Route::get('/create', [BrandController::Class, 'create'])->name('admin.market.brand.create');
             Route::post('/store', [BrandController::Class, 'store'])->name('admin.market.brand.store');
             Route::get('/edit/{id}', [BrandController::Class, 'edit'])->name('admin.market.brand.edit');
             Route::put('/update/{id}', [BrandController::Class, 'update'])->name('admin.market.brand.update');
-            Route::delete('/delete/{id}', [BrandController::Class, 'destroy'])->name('admin.market.brand.destroy');
+            Route::delete('/destroy/{id}', [BrandController::Class, 'destroy'])->name('admin.market.brand.destroy');
+        });
+
+        // comment
+        Route::prefix('comment')->group(function(){
+            Route::get('/', [CommentController::Class, 'index'])->name('admin.market.comment.index');
+            Route::get('/show', [CommentController::Class, 'show'])->name('admin.market.comment.show');
+            Route::post('/store', [CommentController::Class, 'store'])->name('admin.market.comment.store');
+            Route::get('/edit/{id}', [CommentController::Class, 'edit'])->name('admin.market.comment.edit');
+            Route::put('/update/{id}', [CommentController::Class, 'update'])->name('admin.market.comment.update');
+            Route::delete('/delete/{id}', [CommentController::Class, 'destroy'])->name('admin.market.comment.destroy');
         });
     });
 });
