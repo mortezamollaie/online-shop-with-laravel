@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\Market\BrandController;
 
 use App\Http\Controllers\Admin\Market\CommentController;
 
+use App\Http\Controllers\Admin\Market\DeliveryController;
+
 // admin url
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
@@ -41,6 +43,16 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/edit/{id}', [CommentController::Class, 'edit'])->name('admin.market.comment.edit');
             Route::put('/update/{id}', [CommentController::Class, 'update'])->name('admin.market.comment.update');
             Route::delete('/delete/{id}', [CommentController::Class, 'destroy'])->name('admin.market.comment.destroy');
+        });
+
+        //market
+        Route::prefix('delivery')->group(function(){
+            Route::get('/', [DeliveryController::Class, 'index'])->name('admin.market.delivery.index');
+            Route::get('/create', [DeliveryController::Class, 'create'])->name('admin.market.delivery.create');
+            Route::post('/store', [DeliveryController::Class, 'store'])->name('admin.market.delivery.store');
+            Route::get('/edit/{id}', [DeliveryController::Class, 'edit'])->name('admin.market.delivery.edit');
+            Route::put('/update/{id}', [DeliveryController::Class, 'update'])->name('admin.market.delivery.update');
+            Route::delete('/destroy/{id}', [DeliveryController::Class, 'destroy'])->name('admin.market.delivery.destroy');
         });
     });
 });
