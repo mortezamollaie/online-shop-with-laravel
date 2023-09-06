@@ -15,6 +15,10 @@ use App\Http\Controllers\Admin\Market\OrderController;
 
 use App\Http\Controllers\Admin\Market\PaymentController;
 
+use App\Http\Controllers\Admin\Market\ProductController;
+
+use App\Http\Controllers\Admin\Market\GalleryController;
+
 // admin url
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
@@ -105,6 +109,20 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/attendance', [PaymentController::Class, 'attendance'])->name('admin.market.payment.attendance');
 
             Route::get('/confirm', [PaymentController::Class, 'confirm'])->name('admin.market.payment.confirm');
+        });
+
+         //product
+         Route::prefix('product')->group(function(){
+            Route::get('/', [ProductController::Class, 'index'])->name('admin.market.product.index');
+            Route::get('/create', [ProductController::Class, 'create'])->name('admin.market.product.create');
+            Route::post('/store', [ProductController::Class, 'store'])->name('admin.market.product.store');
+            Route::get('/edit/{id}', [ProductController::Class, 'edit'])->name('admin.market.product.edit');
+            Route::put('/update/{id}', [ProductController::Class, 'update'])->name('admin.market.product.update');
+            Route::delete('/destroy/{id}', [ProductController::Class, 'destroy'])->name('admin.market.product.destroy');
+            //gallery
+            Route::get('/gallery', [GalleryController::Class, 'index'])->name('admin.market.gallery.index');
+            Route::post('/gallery/store', [GalleryController::Class, 'store'])->name('admin.market.gallery.store');
+            Route::delete('/gallery/destroy/{id}', [GalleryController::Class, 'destroy'])->name('admin.market.gallery.destroy');
         });
     });
 });
