@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\Market\DiscountController;
 
 use App\Http\Controllers\Admin\Market\OrderController;
 
+use App\Http\Controllers\Admin\Market\PaymentController;
+
 // admin url
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
@@ -92,6 +94,18 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/cancel-order', [OrderController::Class, 'cancelOrder'])->name('admin.market.order.cancelOrder');
         });
 
+         //payment
+         Route::prefix('payment')->group(function(){
+            Route::get('/', [PaymentController::Class, 'index'])->name('admin.market.payment.index');
+
+            Route::get('/online', [PaymentController::Class, 'online'])->name('admin.market.payment.online');
+
+            Route::get('/offline', [PaymentController::Class, 'offline'])->name('admin.market.payment.offline');
+            
+            Route::get('/attendance', [PaymentController::Class, 'attendance'])->name('admin.market.payment.attendance');
+
+            Route::get('/confirm', [PaymentController::Class, 'confirm'])->name('admin.market.payment.confirm');
+        });
     });
 });
 
