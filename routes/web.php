@@ -20,6 +20,8 @@ use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\GalleryController;
 
 use App\Http\Controllers\Admin\Market\PropertyController;
+
+use App\Http\Controllers\Admin\Market\StoreController;
 // admin url
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
@@ -136,6 +138,15 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::delete('/destroy/{id}', [PropertyController::Class, 'destroy'])->name('admin.market.property.destroy');
         });
 
+        //store
+        Route::prefix('store')->group(function(){
+            Route::get('/', [StoreController::Class, 'index'])->name('admin.market.store.index');
+            Route::get('/add-to-store', [StoreController::Class, 'addToStore'])->name('admin.market.store.add-to-store');
+            Route::post('/store', [StoreController::Class, 'store'])->name('admin.market.store.store');
+            Route::get('/edit/{id}', [StoreController::Class, 'edit'])->name('admin.market.store.edit');
+            Route::put('/update/{id}', [StoreController::Class, 'update'])->name('admin.market.store.update');
+            Route::delete('/destroy/{id}', [StoreController::Class, 'destroy'])->name('admin.market.store.destroy');
+        });
     });
 });
 
