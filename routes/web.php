@@ -4,24 +4,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Market\CategoryController;
 use App\Http\Controllers\Admin\Market\BrandController;
-
 use App\Http\Controllers\Admin\Market\CommentController;
-
 use App\Http\Controllers\Admin\Market\DeliveryController;
-
 use App\Http\Controllers\Admin\Market\DiscountController;
-
 use App\Http\Controllers\Admin\Market\OrderController;
-
 use App\Http\Controllers\Admin\Market\PaymentController;
-
 use App\Http\Controllers\Admin\Market\ProductController;
-
 use App\Http\Controllers\Admin\Market\GalleryController;
-
 use App\Http\Controllers\Admin\Market\PropertyController;
-
 use App\Http\Controllers\Admin\Market\StoreController;
+use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
+use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
+use App\Http\Controllers\Admin\Content\FAQController;
 // admin url
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
@@ -146,6 +140,38 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/edit/{id}', [StoreController::Class, 'edit'])->name('admin.market.store.edit');
             Route::put('/update/{id}', [StoreController::Class, 'update'])->name('admin.market.store.update');
             Route::delete('/destroy/{id}', [StoreController::Class, 'destroy'])->name('admin.market.store.destroy');
+        });
+    });
+
+    Route::prefix('content')->namespace('Content')->group(function(){
+        //category
+        Route::prefix('category')->group(function(){
+            Route::get('/', [ContentCategoryController::Class, 'index'])->name('admin.content.category.index');
+            Route::get('/create', [ContentCategoryController::Class, 'create'])->name('admin.content.category.create');
+            Route::post('/store', [ContentCategoryController::Class, 'store'])->name('admin.content.category.store');
+            Route::get('/edit/{id}', [ContentCategoryController::Class, 'edit'])->name('admin.content.category.edit');
+            Route::put('/update/{id}', [ContentCategoryController::Class, 'update'])->name('admin.content.category.update');
+            Route::delete('/destroy/{id}', [ContentCategoryController::Class, 'destroy'])->name('admin.content.category.destroy');
+        });
+
+        // comment
+        Route::prefix('comment')->group(function(){
+            Route::get('/', [ContentCommentController::Class, 'index'])->name('admin.content.comment.index');
+            Route::get('/show', [ContentCommentController::Class, 'show'])->name('admin.content.comment.show');
+            Route::post('/store', [ContentCommentController::Class, 'store'])->name('admin.content.comment.store');
+            Route::get('/edit/{id}', [ContentCommentController::Class, 'edit'])->name('admin.content.comment.edit');
+            Route::put('/update/{id}', [ContentCommentController::Class, 'update'])->name('admin.content.comment.update');
+            Route::delete('/delete/{id}', [ContentCommentController::Class, 'destroy'])->name('admin.content.comment.destroy');
+        });
+
+        // faq
+        Route::prefix('faq')->group(function(){
+            Route::get('/', [FAQController::Class, 'index'])->name('admin.content.faq.index');
+            Route::get('/create', [FAQController::Class, 'create'])->name('admin.content.faq.create');
+            Route::post('/store', [FAQController::Class, 'store'])->name('admin.content.faq.store');
+            Route::get('/edit/{id}', [FAQController::Class, 'edit'])->name('admin.content.faq.edit');
+            Route::put('/update/{id}', [FAQController::Class, 'update'])->name('admin.content.faq.update');
+            Route::delete('/delete/{id}', [FAQController::Class, 'destroy'])->name('admin.content.faq.destroy');
         });
     });
 });
