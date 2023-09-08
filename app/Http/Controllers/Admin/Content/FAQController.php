@@ -12,7 +12,7 @@ class FAQController extends Controller
      */
     public function index()
     {
-        dd('salam');
+        return view('admin.content.faq.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class FAQController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.content.faq.create');
     }
 
     /**
