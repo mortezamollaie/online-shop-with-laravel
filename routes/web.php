@@ -17,6 +17,10 @@ use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryCont
 use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
 use App\Http\Controllers\Admin\Content\FAQController;
 use App\Http\Controllers\Admin\Content\MenuController;
+use App\Http\Controllers\Admin\Content\PostController;
+use App\Http\Controllers\Admin\Content\PageController;
+
+
 // admin url
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
@@ -183,6 +187,26 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/edit/{id}', [MenuController::Class, 'edit'])->name('admin.content.menu.edit');
             Route::put('/update/{id}', [MenuController::Class, 'update'])->name('admin.content.menu.update');
             Route::delete('/delete/{id}', [MenuController::Class, 'destroy'])->name('admin.content.menu.destroy');
+        });
+
+        // page
+        Route::prefix('page')->group(function(){
+            Route::get('/', [PageController::Class, 'index'])->name('admin.content.page.index');
+            Route::get('/create', [PageController::Class, 'create'])->name('admin.content.page.create');
+            Route::post('/store', [PageController::Class, 'store'])->name('admin.content.page.store');
+            Route::get('/edit/{id}', [PageController::Class, 'edit'])->name('admin.content.page.edit');
+            Route::put('/update/{id}', [PageController::Class, 'update'])->name('admin.content.page.update');
+            Route::delete('/delete/{id}', [PageController::Class, 'destroy'])->name('admin.content.page.destroy');
+        });
+
+        // post
+        Route::prefix('post')->group(function(){
+            Route::get('/', [PostController::Class, 'index'])->name('admin.content.post.index');
+            Route::get('/create', [PostController::Class, 'create'])->name('admin.content.post.create');
+            Route::post('/store', [PostController::Class, 'store'])->name('admin.content.post.store');
+            Route::get('/edit/{id}', [PostController::Class, 'edit'])->name('admin.content.post.edit');
+            Route::put('/update/{id}', [PostController::Class, 'update'])->name('admin.content.post.update');
+            Route::delete('/delete/{id}', [PostController::Class, 'destroy'])->name('admin.content.post.destroy');
         });
     });
 });
