@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Market\StoreController;
 use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
 use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
 use App\Http\Controllers\Admin\Content\FAQController;
+use App\Http\Controllers\Admin\Content\MenuController;
 // admin url
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
@@ -172,6 +173,16 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/edit/{id}', [FAQController::Class, 'edit'])->name('admin.content.faq.edit');
             Route::put('/update/{id}', [FAQController::Class, 'update'])->name('admin.content.faq.update');
             Route::delete('/delete/{id}', [FAQController::Class, 'destroy'])->name('admin.content.faq.destroy');
+        });
+
+        // menu
+        Route::prefix('menu')->group(function(){
+            Route::get('/', [MenuController::Class, 'index'])->name('admin.content.menu.index');
+            Route::get('/create', [MenuController::Class, 'create'])->name('admin.content.menu.create');
+            Route::post('/store', [MenuController::Class, 'store'])->name('admin.content.menu.store');
+            Route::get('/edit/{id}', [MenuController::Class, 'edit'])->name('admin.content.menu.edit');
+            Route::put('/update/{id}', [MenuController::Class, 'update'])->name('admin.content.menu.update');
+            Route::delete('/delete/{id}', [MenuController::Class, 'destroy'])->name('admin.content.menu.destroy');
         });
     });
 });
