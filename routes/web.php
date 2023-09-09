@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Content\MenuController;
 use App\Http\Controllers\Admin\Content\PostController;
 use App\Http\Controllers\Admin\Content\PageController;
 use App\Http\Controllers\Admin\User\AdminUserController;
+use App\Http\Controllers\Admin\User\CustomerController;
 
 
 // admin url
@@ -220,6 +221,15 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/edit/{id}', [AdminUserController::Class, 'edit'])->name('admin.user.admin-user.edit');
             Route::put('/update/{id}', [AdminUserController::Class, 'update'])->name('admin.user.admin-user.update');
             Route::delete('/delete/{id}', [AdminUserController::Class, 'destroy'])->name('admin.user.admin-user.destroy');
+        });
+        //customer
+        Route::prefix('customer')->group(function(){
+            Route::get('/', [CustomerController::Class, 'index'])->name('admin.user.customer.index');
+            Route::get('/create', [CustomerController::Class, 'create'])->name('admin.user.customer.create');
+            Route::post('/store', [CustomerController::Class, 'store'])->name('admin.user.customer.store');
+            Route::get('/edit/{id}', [CustomerController::Class, 'edit'])->name('admin.user.customer.edit');
+            Route::put('/update/{id}', [CustomerController::Class, 'update'])->name('admin.user.customer.update');
+            Route::delete('/delete/{id}', [CustomerController::Class, 'destroy'])->name('admin.user.customer.destroy');
         });
     });
 });
