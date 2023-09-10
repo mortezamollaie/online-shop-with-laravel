@@ -21,7 +21,8 @@ use App\Http\Controllers\Admin\Content\PostController;
 use App\Http\Controllers\Admin\Content\PageController;
 use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\User\CustomerController;
-
+use App\Http\Controllers\Admin\User\RoleController;
+use App\Http\Controllers\Admin\User\PermissionController;
 
 // admin url
 
@@ -230,6 +231,26 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/edit/{id}', [CustomerController::Class, 'edit'])->name('admin.user.customer.edit');
             Route::put('/update/{id}', [CustomerController::Class, 'update'])->name('admin.user.customer.update');
             Route::delete('/delete/{id}', [CustomerController::Class, 'destroy'])->name('admin.user.customer.destroy');
+        });
+
+        //role
+        Route::prefix('role')->group(function(){
+            Route::get('/', [RoleController::Class, 'index'])->name('admin.user.role.index');
+            Route::get('/create', [RoleController::Class, 'create'])->name('admin.user.role.create');
+            Route::post('/store', [RoleController::Class, 'store'])->name('admin.user.role.store');
+            Route::get('/edit/{id}', [RoleController::Class, 'edit'])->name('admin.user.role.edit');
+            Route::put('/update/{id}', [RoleController::Class, 'update'])->name('admin.user.role.update');
+            Route::delete('/delete/{id}', [RoleController::Class, 'destroy'])->name('admin.user.role.destroy');
+        });
+
+        //permission
+        Route::prefix('permission')->group(function(){
+            Route::get('/', [PermissionController::Class, 'index'])->name('admin.user.permission.index');
+            Route::get('/create', [PermissionController::Class, 'create'])->name('admin.user.permission.create');
+            Route::post('/store', [PermissionController::Class, 'store'])->name('admin.user.permission.store');
+            Route::get('/edit/{id}', [PermissionController::Class, 'edit'])->name('admin.user.permission.edit');
+            Route::put('/update/{id}', [PermissionController::Class, 'update'])->name('admin.user.permission.update');
+            Route::delete('/delete/{id}', [PermissionController::Class, 'destroy'])->name('admin.user.permission.destroy');
         });
     });
 });
