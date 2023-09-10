@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\User\RoleController;
 use App\Http\Controllers\Admin\User\PermissionController;
 use App\Http\Controllers\Admin\Notify\EmailController;
 use App\Http\Controllers\Admin\Notify\SMSController;
+use App\Http\Controllers\Admin\Ticket\TicketController;
 
 // admin url
 
@@ -278,6 +279,22 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::delete('/delete/{id}', [SMSController::Class, 'destroy'])->name('admin.notify.sms.destroy');
         });
     });
+
+    //ticket
+    Route::prefix('ticket')->namespace('Ticket')->group(function(){
+            Route::get('/new-tickets', [TicketController::Class, 'newTickets'])->name('admin.ticket.newTickets');
+            Route::get('/open-tickets', [TicketController::Class, 'openTickets'])->name('admin.ticket.openTickets');
+            Route::get('/close-tickets', [TicketController::Class, 'closeTickets'])->name('admin.ticket.closeTickets');
+            Route::get('/', [TicketController::Class, 'index'])->name('admin.ticket.index');
+            Route::get('/show', [TicketController::Class, 'show'])->name('admin.ticket.show');
+            Route::get('/create', [TicketController::Class, 'create'])->name('admin.ticket.create');
+            Route::post('/store', [TicketController::Class, 'store'])->name('admin.ticket.store');
+            Route::get('/edit/{id}', [TicketController::Class, 'edit'])->name('admin.ticket.edit');
+            Route::put('/update/{id}', [TicketController::Class, 'update'])->name('admin.ticket.update');
+            Route::delete('/delete/{id}', [TicketController::Class, 'destroy'])->name('admin.ticket.destroy');
+    });
+
+    
 });
 
 
