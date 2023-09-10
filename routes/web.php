@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\User\CustomerController;
 use App\Http\Controllers\Admin\User\RoleController;
 use App\Http\Controllers\Admin\User\PermissionController;
+use App\Http\Controllers\Admin\Notify\EmailController;
+use App\Http\Controllers\Admin\Notify\SMSController;
 
 // admin url
 
@@ -251,6 +253,29 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::get('/edit/{id}', [PermissionController::Class, 'edit'])->name('admin.user.permission.edit');
             Route::put('/update/{id}', [PermissionController::Class, 'update'])->name('admin.user.permission.update');
             Route::delete('/delete/{id}', [PermissionController::Class, 'destroy'])->name('admin.user.permission.destroy');
+        });
+    });
+
+    //notify
+    Route::prefix('notify')->namespace('Notify')->group(function(){
+        //email
+        Route::prefix('email')->group(function(){
+            Route::get('/', [EmailController::Class, 'index'])->name('admin.notify.email.index');
+            Route::get('/create', [EmailController::Class, 'create'])->name('admin.notify.email.create');
+            Route::post('/store', [EmailController::Class, 'store'])->name('admin.notify.email.store');
+            Route::get('/edit/{id}', [EmailController::Class, 'edit'])->name('admin.notify.email.edit');
+            Route::put('/update/{id}', [EmailController::Class, 'update'])->name('admin.notify.email.update');
+            Route::delete('/delete/{id}', [EmailController::Class, 'destroy'])->name('admin.notify.email.destroy');
+        });
+
+        //sms
+        Route::prefix('sms')->group(function(){
+            Route::get('/', [SMSController::Class, 'index'])->name('admin.notify.sms.index');
+            Route::get('/create', [SMSController::Class, 'create'])->name('admin.notify.sms.create');
+            Route::post('/store', [SMSController::Class, 'store'])->name('admin.notify.sms.store');
+            Route::get('/edit/{id}', [SMSController::Class, 'edit'])->name('admin.notify.sms.edit');
+            Route::put('/update/{id}', [SMSController::Class, 'update'])->name('admin.notify.sms.update');
+            Route::delete('/delete/{id}', [SMSController::Class, 'destroy'])->name('admin.notify.sms.destroy');
         });
     });
 });
