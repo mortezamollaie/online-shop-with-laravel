@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\User\PermissionController;
 use App\Http\Controllers\Admin\Notify\EmailController;
 use App\Http\Controllers\Admin\Notify\SMSController;
 use App\Http\Controllers\Admin\Ticket\TicketController;
+use App\Http\Controllers\Admin\Setting\SettingController;
 
 // admin url
 
@@ -294,7 +295,15 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
             Route::delete('/delete/{id}', [TicketController::Class, 'destroy'])->name('admin.ticket.destroy');
     });
 
-    
+    //setting
+    Route::prefix('setting')->namespace('Setting')->group(function(){
+        Route::get('/', [SettingController::Class, 'index'])->name('admin.setting.index');
+        Route::get('/create', [SettingController::Class, 'create'])->name('admin.setting.create');
+        Route::post('/store', [SettingController::Class, 'store'])->name('admin.setting.store');
+        Route::get('/edit/{id}', [SettingController::Class, 'edit'])->name('admin.setting.edit');
+        Route::put('/update/{id}', [SettingController::Class, 'update'])->name('admin.setting.update');
+        Route::delete('/delete/{id}', [SettingController::Class, 'destroy'])->name('admin.setting.destroy');
+    });
 });
 
 
