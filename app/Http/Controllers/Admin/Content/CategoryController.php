@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Content;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Content\PostCategory;
 use App\Http\Requests\Admin\Content\PostCategoryRequest;
 
@@ -31,7 +32,11 @@ class CategoryController extends Controller
      */
     public function store(PostCategoryRequest $request)
     {
-        
+        $inputs = $request->all();
+        $inputs['slug'] = str_replace(' ', '-', $inputs['name']) . '-' . Str::random(5);
+        $inputs['image'] = 'image';
+        $postCategory = PostCategory::create($inputs);
+        return redirect()->route('admin.content.category.index');
     }
 
     /**
