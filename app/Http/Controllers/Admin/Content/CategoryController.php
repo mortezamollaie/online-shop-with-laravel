@@ -52,15 +52,18 @@ class CategoryController extends Controller
      */
     public function edit(PostCategory $postCategory)
     {
-        
+        return view('admin.content.category.edit', compact('postCategory'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostCategoryRequest $request, PostCategory $postCategory)
     {
-        //
+        $inputs = $request->all();
+        $inputs['image'] = 'image';
+        $postCategory->update($inputs);
+        return redirect()->route('admin.content.category.index');
     }
 
     /**
