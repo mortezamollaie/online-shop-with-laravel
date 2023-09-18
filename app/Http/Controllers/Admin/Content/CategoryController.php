@@ -36,9 +36,8 @@ class CategoryController extends Controller
         $inputs['slug'] = str_replace(' ', '-', $inputs['name']) . '-' . Str::random(5);
         $inputs['image'] = 'image';
         $postCategory = PostCategory::create($inputs);
-        return redirect()->route('admin.content.category.index')->with('swal-success', 'دسته بندی جدید شما با موفقیت ثبت شد')->with('toast-success', 'دسته بندی جدید با موفقیت ثبت شد')->with('alert-section-success', 'دسته بندی جدید با موفقیت ثبت شد');
+        return redirect()->route('admin.content.category.index')->with('swal-success', 'دسته بندی جدید شما با موفقیت ثبت شد');
     }
-
     /**
      * Display the specified resource.
      */
@@ -72,7 +71,7 @@ class CategoryController extends Controller
     public function destroy(PostCategory $postCategory)
     {
         $result = $postCategory->delete();
-        return redirect()->route('admin.content.category.index');
+        return redirect()->route('admin.content.category.index')->with('swal-success', 'دسته بندی شما با موفقیت حذف شد');
     }
 
     public function status(PostCategory $postCategory)
