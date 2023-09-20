@@ -64,12 +64,12 @@ class ImageToolsService{
     }
 
     public function setFinalImageName($finalImageName){
-        $this->FinalImageName = $FinalImageName;
+        $this->finalImageName = $finalImageName;
     }
 
     protected function checkDirectory($imageDirectory){
         if(!file_exists($imageDirectory)){
-            mkdir($imageDirectory, 666, true);
+            mkdir($imageDirectory, 0755, true);
         }
     }
 
