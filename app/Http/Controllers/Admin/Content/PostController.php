@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Content\Post;
 use App\Models\Content\PostCategory;
+use App\Http\Requests\Admin\Content\PostRequest;
 
 class PostController extends Controller
 {
@@ -30,7 +31,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         dd($request);
     }
