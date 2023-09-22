@@ -85,6 +85,7 @@ class CategoryController extends Controller
                 $inputs['image'] = $image;
             }
         }
+        $inputs['slug'] = null;
         $postCategory->update($inputs);
         return redirect()->route('admin.content.category.index')->with('swal-success', 'دسته بندی شما با موفقیت ویرایش شد');
     }
