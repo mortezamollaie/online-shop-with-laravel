@@ -37,7 +37,8 @@
                             <section class="col-12">
                                 <div class="form-group">
                                     <label for="">پرسش</label>
-                                    <textarea name="question" id="question" class="form-control form-control-sm" rows="6">{{ old('question') }}</textarea>
+                                    <input type="text" class="form-control form-control-sm" name="question"
+                                        id="question" value="{{ old('question') }}">
                                 </div>
                                 @error('question')
                                     <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -83,8 +84,7 @@
                             <section class="col-12">
                                 <div class="form-group">
                                     <label for="status">وضعیت</label>
-                                    <select name="status" id="" class="form-control form-control-sm"
-                                        id="status">
+                                    <select name="status" class="form-control form-control-sm" id="status">
                                         <option value="0" @if (old('status') == 0) selected @endif>غیرفعال
                                         </option>
                                         <option value="1" @if (old('status') == 1) selected @endif>فعال
@@ -116,7 +116,6 @@
 @section('script')
     <script src="{{ asset('admin-assets/ckeditor/ckeditor.js') }}"></script>
     <script>
-        CKEDITOR.replace('question');
         CKEDITOR.replace('answer');
     </script>
 
