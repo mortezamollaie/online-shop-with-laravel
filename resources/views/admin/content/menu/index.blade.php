@@ -43,7 +43,7 @@
                                 <tr>
                                     <th>{{ $key + 1 }}</th>
                                     <td>{{ $menu->name }}</td>
-                                    <td>{{ $menu->parent_id ? $menu->parent_id : 'منوی اصلی' }}</td>
+                                    <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
                                     <td>{{ $menu->url }}</td>
                                     <td>
                                         <label>
@@ -53,10 +53,15 @@
                                         </label>
                                     </td>
                                     <td class="width-16-rem text-left">
-                                        <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
-                                            ویرایش</a>
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i>
-                                            حذف</button>
+                                        <a href="{{ route('admin.content.menu.edit', $menu->id) }}"
+                                            class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                        <form class="d-inline" action="{{ route('admin.content.menu.destroy', $menu->id) }}"
+                                            method="post">
+                                            @csrf
+                                            {{ method_field('delete') }}
+                                            <button class="btn btn-danger btn-sm delete" type="submit"><i
+                                                    class="fa fa-trash-alt"></i> حذف</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

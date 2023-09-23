@@ -16,4 +16,8 @@ class Menu extends Model
         'parent_id',
         'status',
     ];
+
+    public function parent(){
+        return $this->belongsTo($this, 'parent_id')->with('parent');
+    }
 }
