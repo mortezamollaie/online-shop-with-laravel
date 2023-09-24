@@ -39,4 +39,8 @@ class Post extends Model
     public function postCategory(){
         return $this->belongsTo(PostCategory::Class, 'category_id');
     }
+
+    public function comments(){
+        return $this->morphMany('App\Models\Content\Comment', 'commentable');
+    }
 }
