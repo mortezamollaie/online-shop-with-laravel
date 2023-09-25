@@ -51,17 +51,22 @@ class SMSController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(SMS $sms)
     {
-        //
+        return view('admin.notify.sms.edit', compact('sms'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SMSRequest $request, SMS $sms)
     {
-        //
+        $inputs = $request->all();
+        //date fixed
+        $realTimestampStart = substr($request->published_at, 0, 10);
+        $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
+        $sms->update($inputs);
+        return redirect()->route('admin.notify.sms.index')->with('swal-success', 'پیامک شما با موفقیت ویرایش شد');;
     }
 
     /**

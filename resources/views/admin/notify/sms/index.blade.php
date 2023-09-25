@@ -44,7 +44,7 @@
                                     <th>{{ $key += 1 }}</th>
                                     <td>{{ $single_sms->title }}</td>
                                     <td>{{ $single_sms->body }}</td>
-                                    <td>{{ jalaliDate($single_sms->published_at) }}</td>
+                                    <td>{{ jalaliDate($single_sms->published_at, 'H:i:s Y-m-d') }}</td>
                                     <td>
                                         <label>
                                             <input id="{{ $single_sms->id }}" onchange="changeStatus({{ $single_sms->id }})"
@@ -53,7 +53,8 @@
                                         </label>
                                     </td>
                                     <td class="width-16-rem text-left">
-                                        <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
+                                        <a href="{{ route('admin.notify.sms.edit', $single_sms->id) }}"
+                                            class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
                                             ویرایش</a>
                                         <form class="d-inline"
                                             action="{{ route('admin.notify.sms.destroy', $single_sms->id) }}"
