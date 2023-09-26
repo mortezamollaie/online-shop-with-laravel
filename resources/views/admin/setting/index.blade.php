@@ -19,7 +19,6 @@
                     <h5>تنظیمات</h5>
                 </section>
                 <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                    <a href="{{ route('admin.setting.create') }}" class="btn btn-info btn-sm">ایجاد ویژگی جدید</a>
                     <div class="max-width-16-rem">
                         <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                     </div>
@@ -30,40 +29,24 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>نام ویژگی</th>
-                                <th>مقدار</th>
+                                <th>عنوان سایت</th>
+                                <th>توضیحات سایت</th>
+                                <th>کلمات کلیدی سایت</th>
+                                <th>لوگو سایت</th>
+                                <th>آیکون سایت</th>
                                 <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th>1</th>
-                                <td>نمایشگر</td>
-                                <td>کالای الکترونیکی</td>
+                                <td>{{ $setting->title }}</td>
+                                <td>{{ $setting->description }}</td>
+                                <td>{{ $setting->keywords }}</td>
+                                <td>{{ $setting->logo }}</td>
+                                <td>{{ $setting->icon }}</td>
                                 <td class="width-16-rem text-left">
                                     <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i>
-                                        حذف</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>2</th>
-                                <td>موبایل</td>
-                                <td>کالای الکترونیکی</td>
-                                <td class="width-16-rem text-left">
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i>
-                                        حذف</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>3</th>
-                                <td>لوازم جانبی</td>
-                                <td>کالای الکترونیکی</td>
-                                <td class="width-16-rem text-left">
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i>
-                                        حذف</button>
                                 </td>
                             </tr>
                         </tbody>
