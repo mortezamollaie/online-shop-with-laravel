@@ -97,10 +97,10 @@
                     if (response.status) {
                         if (response.checked) {
                             element.prop('checked', true);
-                            successToast('ایمیل  با موفقیت فعال شد')
+                            successToast('فایل با موفقیت فعال شد')
                         } else {
                             element.prop('checked', false);
-                            successToast('ایمیل  با موفقیت غیر فعال شد')
+                            successToast('فایل با موفقیت غیر فعال شد')
                         }
                     } else {
                         element.prop('checked', elementValue);
