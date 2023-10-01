@@ -40,40 +40,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($admins as $key => $admin)
+                            @endforeach
                             <tr>
-                                <th>1</th>
-                                <td>mm.gov.1381@gmail.com</td>
-                                <td>09900580684</td>
-                                <td>مرتضی</td>
-                                <td>ملائی</td>
-                                <td>ادمین</td>
-                                <td class="width-22-rem text-left">
-                                    <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> نقش</a>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i>
-                                        حذف</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>2</th>
-                                <td>mm.gov.1381@gmail.com</td>
-                                <td>09900580684</td>
-                                <td>مرتضی</td>
-                                <td>ملائی</td>
-                                <td>ادمین</td>
-                                <td class="width-22-rem text-left">
-                                    <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> نقش</a>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i>
-                                        حذف</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>3</th>
-                                <td>mm.gov.1381@gmail.com</td>
-                                <td>09900580684</td>
-                                <td>مرتضی</td>
-                                <td>ملائی</td>
+                                <th>{{ $key + 1 }}</th>
+                                <td>{{ $admin->id }}</td>
+                                <td>{{ $admin->mobile }}</td>
+                                <td>{{ $admin->first_name }}</td>
+                                <td>{{ $admin->last_name }}</td>
                                 <td>ادمین</td>
                                 <td class="width-22-rem text-left">
                                     <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> نقش</a>
